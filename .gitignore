@@ -1,0 +1,21 @@
+.venv/
+venv/
+*venv/
+.env
+env
+node_modules/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+.cache/
+*.cact
+*.safetensors
+.huggingface/
+hf_cache/
+onnx/
+eval_results/
+New Text Document.txt

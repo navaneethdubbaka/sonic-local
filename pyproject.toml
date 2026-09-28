@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sonic-local"
+version = "0.1.0"
+description = "Local PC assistant: Laya routes, Needle fills tools, cloud writes"
+readme = "prd.md"
+requires-python = ">=3.10"
+dependencies = [
+  "laya[langchain,onnx]>=0.3.16",
+  "langchain-core>=0.2.0",
+  "langgraph>=0.1.0",
+  "langchain-openai>=0.2.0",
+  "pydantic>=2.0",
+  "pydantic-settings>=2.0",
+  "python-dotenv>=1.0",
+  "onnxruntime>=1.17",
+]
+
+[project.optional-dependencies]
+needle = ["cactus-needle"]
+gpu-cuda = ["onnxruntime-gpu"]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+sonic-route = "sonic.cli:route_main"
+sonic-eval = "sonic.cli:eval_main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sonic*"]
+
+[tool.setuptools.package-data]
+sonic = ["eval/*.jsonl"]
